@@ -1,0 +1,72 @@
+<ion-header [translucent]="true">
+  <ion-toolbar style="padding: 0 20px;">
+    <ion-title style="font-weight: 600; letter-spacing: 4px; text-align: left; font-size: 16px" slot="start">
+      Ding Ambition
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Ding Ambition</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div id="container">
+    <div class="info">
+      <div class="info--title">
+        Information
+      </div>
+      <div class="info-avatar">
+        <ion-avatar>
+          <img [src]="getAvatar()" [attr.alt]="getName()">
+        </ion-avatar>
+      </div>
+      <div class="info--item">
+        <div class="label">
+          ID:
+        </div>
+        <div class="text">
+          {{getId()}}
+        </div>
+      </div>
+      <div class="info--item">
+        <div class="label">
+          Username:
+        </div>
+        <div class="text">
+          {{getUsername()}}
+        </div>
+      </div>
+      <div class="info--item">
+        <div class="label">
+          Name:
+        </div>
+        <div class="text">
+          {{getName()}}
+        </div>
+      </div>
+      <div class="info--item">
+        <div class="label">
+          Email:
+        </div>
+        <div class="text">
+          {{getEmail()}}
+        </div>
+      </div>
+      <div class="info--item">
+        <div class="label">
+          Phone:
+        </div>
+        <div class="text">
+          {{getPhone()}}
+        </div>
+      </div>
+      <div class="info-button">
+        <ion-button color="danger" (click)="logout()">Logout</ion-button>
+        <ion-ripple-effect></ion-ripple-effect>
+      </div>
+    </div>
+  </div>
+</ion-content>

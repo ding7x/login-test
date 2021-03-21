@@ -1,0 +1,36 @@
+<ion-content>
+  <div class="_container">
+    <div class="_wrapper">
+      <div class="form-layout">
+        <div class="form-layout_title">
+          <div class="eyebrow">
+            <i>Welcome to</i>
+          </div>
+          <div class="brand">
+            Ding Ambition
+          </div>
+        </div>
+        <div class="form-layout_body">
+          <form class="form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <ion-item lines="full">
+              <ion-label position="floating">Username</ion-label>
+              <ion-input type="text" required formControlName="username"></ion-input>
+            </ion-item>
+
+            <ion-item lines="full">
+              <ion-label position="floating">Password</ion-label>
+              <ion-input type="password" required formControlName="password"></ion-input>
+            </ion-item>
+
+            <ion-row>
+              <ion-col>
+                <ion-button type="submit" color="primary" class="_button">Login
+                </ion-button>
+              </ion-col>
+            </ion-row>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>
