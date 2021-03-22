@@ -13,9 +13,9 @@
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
+  <!--<div id="container">
     <div class="info">
-      <div class="info--title">
+      <div class="info&#45;&#45;title">
         Information
       </div>
       <div class="info-avatar">
@@ -23,7 +23,7 @@
           <img [src]="getAvatar()" [attr.alt]="getName()">
         </ion-avatar>
       </div>
-      <div class="info--item">
+      <div class="info&#45;&#45;item">
         <div class="label">
           ID:
         </div>
@@ -31,7 +31,7 @@
           {{getId()}}
         </div>
       </div>
-      <div class="info--item">
+      <div class="info&#45;&#45;item">
         <div class="label">
           Username:
         </div>
@@ -39,7 +39,7 @@
           {{getUsername()}}
         </div>
       </div>
-      <div class="info--item">
+      <div class="info&#45;&#45;item">
         <div class="label">
           Name:
         </div>
@@ -47,7 +47,7 @@
           {{getName()}}
         </div>
       </div>
-      <div class="info--item">
+      <div class="info&#45;&#45;item">
         <div class="label">
           Email:
         </div>
@@ -55,7 +55,7 @@
           {{getEmail()}}
         </div>
       </div>
-      <div class="info--item">
+      <div class="info&#45;&#45;item">
         <div class="label">
           Phone:
         </div>
@@ -68,5 +68,32 @@
         <ion-ripple-effect></ion-ripple-effect>
       </div>
     </div>
-  </div>
+  </div>-->
+  <ion-list class="list">
+    <ion-list-header color="primary" style="font-weight: 700; font-size: 20px;">
+      <ion-label>Table of Time Track</ion-label>
+    </ion-list-header>
+    <div *ngFor="let t of timetrack" class="list--item">
+      <div class="id">
+        <div class="label">
+          ID:
+        </div>
+        <div class="value">
+          {{t.id || ''}}
+        </div>
+      </div>
+      <div class="name">
+        <div class="label">
+          Name:
+        </div>
+        <div class="value">
+          {{t.name || 'Hide Data'}}
+        </div>
+      </div>
+    </div>
+    <div class="info-button">
+      <ion-button color="danger" (click)="logout()">Logout</ion-button>
+      <ion-ripple-effect></ion-ripple-effect>
+    </div>
+  </ion-list>
 </ion-content>

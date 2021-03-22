@@ -12,9 +12,7 @@ export class AuthenticationService {
 
   async login(username, password) {
     try {
-      const res = await axios.post('https://s.hatinhcogi.com/auth/jwt', {username, password});
-      console.log(res);
-      return await axios.post('https://s.hatinhcogi.com/auth/login', {username, password});
+      return await axios.post('https://vtimetrack.taydocantho.com/signin', {username, password});
     } catch (e) {
       return e;
     }

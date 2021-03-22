@@ -49,3 +49,58 @@
     width: 450px;
   }
 }
+
+
+.list {
+  position: absolute;
+  width: 300px;
+  border-radius: 5px;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+
+  .list--item {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, .1);
+
+    .id, .name {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .id {
+      margin-bottom: 5px;
+    }
+
+    .label {
+      width: 100px;
+      font-weight: 600;
+    }
+  }
+
+  @media all and (min-width: 375px) {
+    width: 350px;
+  }
+
+  @media all and (min-width: 768px) {
+    width: 450px;
+
+    .list--item {
+
+      .id, .name {
+        display: flex;
+        flex-direction: row;
+      }
+    }
+  }
+}
+
+.info-button {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0 10px 0;
+}

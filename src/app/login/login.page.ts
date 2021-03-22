@@ -4,6 +4,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {AuthenticationService} from '../_services/authentication.service';
 import {ToastController} from '@ionic/angular';
 import {AuthorizationService} from '../_services/authorization.service';
+import axios from 'axios';
 
 @Component({
   selector: 'app-login',
@@ -43,10 +44,10 @@ export class LoginPage implements OnInit {
     }
     try {
       const res = await this.authenticationService.login(this.loginForm.value.username, this.loginForm.value.password);
-      if (res.status === 201) {
+      if (res.status === 200) {
         await this.authorizationService.setLoginState(true);
         await this.loginForm.reset();
-        await this.authorizationService.setUser(res.data);
+        await this.authorizationService.setToken(res.data.token);
         await this.router.navigate(['/'], {relativeTo: this.route});
       } else {
         const toast = await this.toastController.create({
