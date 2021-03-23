@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import {User} from '../interfaces/user.interface';
 import axios from 'axios';
 import {TimeTrackInterface} from '../interfaces/timetrack.interface';
+import {CookieService} from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-home',
@@ -16,7 +17,8 @@ export class HomePage implements OnInit {
 
   constructor(
     private authorizationService: AuthorizationService,
-    private router: Router
+    private router: Router,
+    private cookieService: CookieService,
   ) {
   }
 
@@ -26,36 +28,9 @@ export class HomePage implements OnInit {
     this.timetrack = resTimeTrack.data;
   }
 
-  /*  getId() {
-      return this.user.id;
-    }
-
-    getUsername() {
-      return this.user.email;
-    }
-
-    getName() {
-      return this.user.name;
-    }
-
-    getPhone() {
-      return this.user.phone;
-    }
-
-    getAvatar() {
-      return `https://s.hatinhcogi.com/account/image/${this.user.avatar}`;
-    }
-
-    getEmail() {
-      return this.user.email;
-    }
-
-    getGender() {
-      return this.user.gender;
-    }*/
-
   logout() {
     this.authorizationService.setLoginState(false);
+    this.cookieService.delete('at');
     this.router.navigate(['/login']);
   }
 }

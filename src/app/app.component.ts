@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {AuthorizationService} from './_services/authorization.service';
 import {Router} from '@angular/router';
+import {CookieService} from 'ngx-cookie-service';
+
 
 @Component({
   selector: 'app-root',
@@ -10,8 +12,15 @@ import {Router} from '@angular/router';
 export class AppComponent {
   constructor(
     private authorizationService: AuthorizationService,
-    private router: Router
+    private router: Router,
+    private cookieService: CookieService,
   ) {
+    const at = this.cookieService.get('at');
+    if (at !== '') {
+      this.authorizationService.setLoginState(true);
+      this.authorizationService.setToken(at);
+      this.router.navigate(['/']);
+    }
     const loginState = this.authorizationService.getLoginState();
     if (!loginState) {
       this.router.navigate(['/login']);

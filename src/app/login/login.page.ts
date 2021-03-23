@@ -5,6 +5,8 @@ import {AuthenticationService} from '../_services/authentication.service';
 import {ToastController} from '@ionic/angular';
 import {AuthorizationService} from '../_services/authorization.service';
 import axios from 'axios';
+// tslint:disable-next-line:no-unused-expression
+import {CookieService} from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-login',
@@ -24,7 +26,8 @@ export class LoginPage implements OnInit {
     private router: Router,
     private authenticationService: AuthenticationService,
     private authorizationService: AuthorizationService,
-    public toastController: ToastController
+    public toastController: ToastController,
+    private cookieService: CookieService,
   ) {
   }
 
@@ -45,8 +48,9 @@ export class LoginPage implements OnInit {
     try {
       const res = await this.authenticationService.login(this.loginForm.value.username, this.loginForm.value.password);
       if (res.status === 200) {
-        await this.authorizationService.setLoginState(true);
-        await this.loginForm.reset();
+        this.authorizationService.setLoginState(true);
+        this.loginForm.reset();
+        await this.cookieService.set('at', res.data.token);
         await this.authorizationService.setToken(res.data.token);
         await this.router.navigate(['/'], {relativeTo: this.route});
       } else {
