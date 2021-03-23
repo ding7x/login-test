@@ -30,7 +30,7 @@ export class HomePage implements OnInit {
 
   logout() {
     this.authorizationService.setLoginState(false);
-    this.cookieService.delete('at');
+    this.cookieService.delete('at_test_login');
     this.router.navigate(['/login']);
   }
 }

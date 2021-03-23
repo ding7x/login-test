@@ -15,7 +15,7 @@ export class AppComponent {
     private router: Router,
     private cookieService: CookieService,
   ) {
-    const at = this.cookieService.get('at');
+    const at = this.cookieService.get('at_test_login');
     if (at !== '') {
       this.authorizationService.setLoginState(true);
       this.authorizationService.setToken(at);

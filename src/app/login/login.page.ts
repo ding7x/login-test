@@ -50,7 +50,7 @@ export class LoginPage implements OnInit {
       if (res.status === 200) {
         this.authorizationService.setLoginState(true);
         this.loginForm.reset();
-        await this.cookieService.set('at', res.data.token);
+        await this.cookieService.set('at_test_login', res.data.token);
         await this.authorizationService.setToken(res.data.token);
         await this.router.navigate(['/'], {relativeTo: this.route});
       } else {
